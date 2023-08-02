@@ -2,7 +2,7 @@
 apiVersion: v1
 metadata:
   name: wordpress-mysql
-  namespace: wordpress
+  namespace: argocd-test
   labels:
     app: wordpress
 spec:
