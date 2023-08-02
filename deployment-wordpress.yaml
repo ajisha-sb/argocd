@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 metadata:
   name: wordpress
-  namespace: wordpress
+  namespace: argocd-test
   labels:
     app: wordpress
 spec:
@@ -19,9 +19,9 @@ spec:
         tier: frontend
     spec:
       volumes:
-        - name: wordpress-persistent-storage
+        - name: wordpress-persistent-storage-1
           persistentVolumeClaim:
-            claimName: wp-pv-claim
+            claimName: wp-pv-claim-1
       containers:
           terminationMessagePath: /dev/termination-log
           name: wordpress
@@ -36,7 +36,7 @@ spec:
               protocol: TCP
           imagePullPolicy: IfNotPresent
           volumeMounts:
-            - name: wordpress-persistent-storage
+            - name: wordpress-persistent-storage-1
               mountPath: /var/www/html
           terminationMessagePolicy: File
           image: 'wordpress:4.8-apache'
